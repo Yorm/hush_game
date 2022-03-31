@@ -1,0 +1,226 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://world/grass_tile.png" type="Texture" id=2]
+[ext_resource path="res://world/SmallGrass.tscn" type="PackedScene" id=3]
+[ext_resource path="res://world/Bush.tscn" type="PackedScene" id=4]
+[ext_resource path="res://testStuff/Box.tscn" type="PackedScene" id=5]
+[ext_resource path="res://ui/Dialog.tscn" type="PackedScene" id=6]
+[ext_resource path="res://camera/Camera2D.tscn" type="PackedScene" id=7]
+[ext_resource path="res://world/flowers.png" type="Texture" id=8]
+[ext_resource path="res://world/BigRock.tscn" type="PackedScene" id=9]
+[ext_resource path="res://world/SmallRock.tscn" type="PackedScene" id=10]
+[ext_resource path="res://world/background.png" type="Texture" id=11]
+[ext_resource path="res://world/grass_tileset_16x.png" type="Texture" id=12]
+[ext_resource path="res://world/trees/EvilTree_1_crown.tscn" type="PackedScene" id=13]
+[ext_resource path="res://world/trees/KnotTree_1_crown.tscn" type="PackedScene" id=14]
+[ext_resource path="res://world/trees/Tree_3_crown.tscn" type="PackedScene" id=15]
+[ext_resource path="res://world/trees/KnotTree_3_crown.tscn" type="PackedScene" id=16]
+[ext_resource path="res://world/trees/EvilTree_2_crown.tscn" type="PackedScene" id=17]
+[ext_resource path="res://world/trees/Tree_2_crown.tscn" type="PackedScene" id=18]
+[ext_resource path="res://world/Cliff.tscn" type="PackedScene" id=19]
+
+[sub_resource type="TileSet" id=1]
+0/name = "grass_tileset_16x.png 0"
+0/texture = ExtResource( 12 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 64 )
+0/tile_mode = 2
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 16, 16 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [ Vector3( 0, 0, 3 ), Vector3( 1, 0, 2 ) ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[node name="Meadow" type="Node2D"]
+
+[node name="Camera2D" parent="." instance=ExtResource( 7 )]
+position = Vector2( 155, 83 )
+
+[node name="TopLeft" parent="Camera2D/Limits" index="0"]
+position = Vector2( -64, -64 )
+
+[node name="BottomRight" parent="Camera2D/Limits" index="1"]
+position = Vector2( 384, 256 )
+
+[node name="GrassBackground" type="Sprite" parent="."]
+position = Vector2( -64, -64 )
+texture = ExtResource( 11 )
+centered = false
+region_enabled = true
+region_rect = Rect2( -64, -80, 448, 320 )
+region_filter_clip = true
+
+[node name="GrassAndFlowersTileMap" type="TileMap" parent="."]
+tile_set = SubResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( -196605, 0, 65537, -196604, 0, 65537, -196603, 0, 65537, -196602, 0, 131073, -196601, 0, 65537, -196600, 0, 65537, -196599, 0, 65537, -196598, 0, 196610, -131071, 0, 196611, -131070, 0, 196608, -131069, 0, 131073, -131068, 0, 196611, -131067, 0, 196608, -131066, 0, 131073, -131065, 0, 65539, -131064, 0, 65537, -131063, 0, 196611, -131062, 0, 65537, -65536, 0, 65536, 65535, 0, 0, 0, 0, 1, 7, 0, 65536, 9, 0, 196610, 10, 0, 131073, 11, 0, 196610, 12, 0, 0, 17, 0, 0, 65541, 0, 65536, 65542, 0, 2, 65543, 0, 65539, 65544, 0, 131073, 65545, 0, 131073, 65546, 0, 1, 65547, 0, 65538, 65548, 0, 131072, 65551, 0, 196610, 131073, 0, 0, 131076, 0, 0, 131077, 0, 131072, 131078, 0, 196610, 131079, 0, 196610, 131080, 0, 131073, 131081, 0, 131073, 131082, 0, 196610, 131083, 0, 0, 131084, 0, 196611, 131085, 0, 131072, 131086, 0, 131073, 131090, 0, 196610, 196610, 0, 1, 196611, 0, 131073, 196612, 0, 0, 196614, 0, 196611, 196615, 0, 65538, 196616, 0, 131073, 196617, 0, 196611, 196620, 0, 196611, 196621, 0, 65538, 196625, 0, 196609, 262144, 0, 65536, 262145, 0, 3, 262146, 0, 2, 262147, 0, 1, 262148, 0, 1, 262150, 0, 65536, 262151, 0, 196608, 262152, 0, 131072, 262154, 0, 196610, 262155, 0, 196610, 262157, 0, 196608, 262160, 0, 196611, 327681, 0, 65538, 327682, 0, 0, 327684, 0, 131074, 327686, 0, 131074, 327695, 0, 196611, 327696, 0, 196609, 327697, 0, 131072, 393216, 0, 65537, 393221, 0, 131074, 393222, 0, 131075, 393223, 0, 196608, 393232, 0, 131073, 393233, 0, 65536, 393234, 0, 65538, 458756, 0, 196610, 458760, 0, 1, 458765, 0, 65536, 458766, 0, 131074, 458767, 0, 131073, 458768, 0, 131073, 458769, 0, 131073, 524290, 0, 131075, 524291, 0, 131073, 524292, 0, 131073, 524294, 0, 65537, 524295, 0, 131073, 524297, 0, 65539, 524300, 0, 65537, 524303, 0, 196608, 524304, 0, 131075, 524305, 0, 131073, 524306, 0, 131073, 589826, 0, 196608, 589827, 0, 131073, 589828, 0, 196610, 589833, 0, 65536, 589841, 0, 196608, 589842, 0, 65536, 589843, 0, 196609, 655361, 0, 65537, 655363, 0, 131072, 655378, 0, 196610 )
+
+[node name="Grass" type="Node2D" parent="."]
+position = Vector2( 48, 112 )
+
+[node name="GrassTile" type="Sprite" parent="Grass"]
+position = Vector2( 226, -85 )
+texture = ExtResource( 2 )
+
+[node name="Flowers" type="Node2D" parent="."]
+
+[node name="Flowers" type="Sprite" parent="Flowers"]
+position = Vector2( 274, 27 )
+texture = ExtResource( 8 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Player" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 155, 83 )
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
+remote_path = NodePath("../../../Camera2D")
+
+[node name="SmallGrass" type="YSort" parent="YSort"]
+
+[node name="SmallGrass" parent="YSort/SmallGrass" instance=ExtResource( 3 )]
+position = Vector2( 144, 93 )
+
+[node name="SmallGrass2" parent="YSort/SmallGrass" instance=ExtResource( 3 )]
+position = Vector2( 133, 90 )
+
+[node name="SmallGrass3" parent="YSort/SmallGrass" instance=ExtResource( 3 )]
+position = Vector2( 120, 105 )
+
+[node name="SmallGrass4" parent="YSort/SmallGrass" instance=ExtResource( 3 )]
+position = Vector2( 125, 96 )
+
+[node name="SmallGrass5" parent="YSort/SmallGrass" instance=ExtResource( 3 )]
+position = Vector2( 135, 103 )
+
+[node name="Bushes" type="YSort" parent="YSort"]
+
+[node name="Bush" parent="YSort/Bushes" instance=ExtResource( 4 )]
+position = Vector2( 83, 77 )
+
+[node name="Bush2" parent="YSort/Bushes" instance=ExtResource( 4 )]
+position = Vector2( 173, 67 )
+
+[node name="Bush3" parent="YSort/Bushes" instance=ExtResource( 4 )]
+position = Vector2( -48, -40 )
+
+[node name="Bush4" parent="YSort/Bushes" instance=ExtResource( 4 )]
+position = Vector2( 368, 248 )
+
+[node name="Box" parent="YSort/Bushes" instance=ExtResource( 5 )]
+position = Vector2( 248, 112 )
+
+[node name="DialogArea" parent="YSort/Bushes/Box" index="1"]
+message = [ "Я не коробка", "И тебе не советую", "..." ]
+
+[node name="Sic" parent="YSort/Bushes/Box" index="2"]
+frame = 1
+
+[node name="Box2" parent="YSort/Bushes" instance=ExtResource( 5 )]
+position = Vector2( 128, 64 )
+
+[node name="DialogArea" parent="YSort/Bushes/Box2" index="1"]
+message = [ "Я коробка", "Ты коробка" ]
+
+[node name="Sic" parent="YSort/Bushes/Box2" index="2"]
+frame = 1
+
+[node name="Box3" parent="YSort/Bushes" instance=ExtResource( 5 )]
+
+[node name="DialogArea" parent="YSort/Bushes/Box3" index="1"]
+message = [ "Во мне ничего нет... Честно..." ]
+
+[node name="Sic" parent="YSort/Bushes/Box3" index="2"]
+frame = 1
+
+[node name="Rocks" type="YSort" parent="YSort"]
+
+[node name="BigRock" parent="YSort/Rocks" instance=ExtResource( 9 )]
+position = Vector2( 240, 64 )
+
+[node name="SmallRock" parent="YSort/Rocks" instance=ExtResource( 10 )]
+position = Vector2( 112, 136 )
+
+[node name="SmallRock2" parent="YSort/Rocks" instance=ExtResource( 10 )]
+position = Vector2( 136, 136 )
+
+[node name="SmallRock3" parent="YSort/Rocks" instance=ExtResource( 10 )]
+position = Vector2( 216, 72 )
+
+[node name="Trees" type="YSort" parent="YSort"]
+
+[node name="EvilTree_2_crown" parent="YSort/Trees" instance=ExtResource( 17 )]
+position = Vector2( 57, 134 )
+
+[node name="KnotTree_3_crown2" parent="YSort/Trees" instance=ExtResource( 16 )]
+position = Vector2( 285, 135 )
+
+[node name="EvilTree_1_crown" parent="YSort/Trees" instance=ExtResource( 13 )]
+position = Vector2( 271, 116 )
+
+[node name="KnotTree_3_crown" parent="YSort/Trees" instance=ExtResource( 16 )]
+position = Vector2( 49, 62 )
+
+[node name="Tree_2_crown" parent="YSort/Trees" instance=ExtResource( 18 )]
+position = Vector2( 240, 31 )
+
+[node name="Tree_3_crown" parent="YSort/Trees" instance=ExtResource( 15 )]
+position = Vector2( 218, 39 )
+
+[node name="KnotTree_1_crown" parent="YSort/Trees" instance=ExtResource( 14 )]
+position = Vector2( 149, 30 )
+
+[node name="EvilTree_2_crown2" parent="YSort/Trees" instance=ExtResource( 17 )]
+position = Vector2( 59, -32 )
+
+[node name="Cliffs" type="YSort" parent="YSort"]
+
+[node name="Cliff" parent="YSort/Cliffs" instance=ExtResource( 19 )]
+position = Vector2( 59, -42 )
+
+[node name="Cliff" parent="YSort/Cliffs/Cliff" instance=ExtResource( 19 )]
+position = Vector2( 42, -1 )
+
+[node name="Cliff2" parent="YSort/Cliffs/Cliff" instance=ExtResource( 19 )]
+position = Vector2( 84, -2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DialogSpace" parent="CanvasLayer" instance=ExtResource( 6 )]
+
+[node name="TextureRect" parent="CanvasLayer/DialogSpace" index="0"]
+margin_left = -76.0
+margin_top = 4.0
+margin_right = 132.0
+margin_bottom = 44.0
+
+[node name="LeftBottom" type="StaticBody2D" parent="."]
+position = Vector2( -56, -56 )
+
+[node name="ColisionPoligon" type="CollisionPolygon2D" parent="LeftBottom"]
+polygon = PoolVector2Array( 0, -8, 0, 312, 440, 312, 440, 320, -16, 320, -16, -16, 0, -16 )
+
+[node name="RightTop" type="StaticBody2D" parent="."]
+
+[node name="CollisionPoligon" type="CollisionPolygon2D" parent="RightTop"]
+position = Vector2( -56, -56 )
+polygon = PoolVector2Array( -8, 8, 432, 8, 432, 312, 448, 312, 448, -16, -8, -16 )
+
+[editable path="Camera2D"]
+[editable path="YSort/Bushes/Box"]
+[editable path="YSort/Bushes/Box2"]
+[editable path="YSort/Bushes/Box3"]
+[editable path="CanvasLayer/DialogSpace"]

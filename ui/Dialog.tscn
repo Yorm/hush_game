@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://ui/DialogUI.gd" type="Script" id=1]
+[ext_resource path="res://ui/dialog_background.png" type="Texture" id=2]
+[ext_resource path="res://fonts/Fifaks10Dev1.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://ui/dialog_end.png" type="Texture" id=4]
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 12, 12 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 4 )
+region = Rect2( 12, 0, 12, 12 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "Animated",
+"speed": 2.0
+} ]
+
+[sub_resource type="DynamicFont" id=1]
+size = 12
+outline_color = Color( 0.956863, 0.823529, 0.611765, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[node name="DialogSpace" type="Control"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -20.0
+margin_top = -40.0
+margin_right = 20.0
+script = ExtResource( 1 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = -89.0
+margin_top = -38.0
+margin_right = 119.0
+margin_bottom = 2.0
+texture = ExtResource( 2 )
+
+[node name="DialogEnd" type="AnimatedSprite" parent="TextureRect"]
+position = Vector2( 197, 21 )
+frames = SubResource( 5 )
+animation = "Animated"
+frame = 1
+playing = true
+
+[node name="Dialog" type="Node2D" parent="TextureRect"]
+
+[node name="DialogText" type="Label" parent="TextureRect/Dialog"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 10.0
+margin_right = 199.0
+margin_bottom = 24.0
+theme = SubResource( 2 )
+text = "пусто"
+
+[node name="next_char" type="Timer" parent="TextureRect/Dialog"]
+
+[node name="next_message" type="Timer" parent="TextureRect/Dialog"]
+
+[connection signal="timeout" from="TextureRect/Dialog/next_char" to="." method="_on_next_char_timeout"]
+[connection signal="timeout" from="TextureRect/Dialog/next_message" to="." method="_on_next_message_timeout"]
