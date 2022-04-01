@@ -6,6 +6,10 @@ func _ready():
 	DialogStats.connect("show_dialog", self, "hide_sic")
 	DialogStats.connect("hide_dialog", self, "show_sic")
 
+	var time = rand_range(0.5,1)
+	yield(get_tree().create_timer(time), "timeout")
+	play("Animate")
+
 func hide_sic(value):
 	visible = false
 	

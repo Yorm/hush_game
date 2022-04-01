@@ -26,5 +26,5 @@ animations = [ {
 [node name="Sic" type="AnimatedSprite"]
 frames = SubResource( 4 )
 animation = "Animate"
-playing = true
+frame = 1
 script = ExtResource( 2 )

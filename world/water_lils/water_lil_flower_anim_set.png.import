@@ -1,0 +1,35 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/water_lil_flower_anim_set.png-99f92e3e407bdb6c54ca7626df5eee21.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://world/water_lils/water_lil_flower_anim_set.png"
+dest_files=[ "res://.import/water_lil_flower_anim_set.png-99f92e3e407bdb6c54ca7626df5eee21.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+process/normal_map_invert_y=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0
